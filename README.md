@@ -37,4 +37,4 @@ Project CRUD people using Next.js and MongoDB.
     ```
     Open [http://localhost:3000](http://localhost:3000) with browser to see the result.
 
-
+Project can be access at https://crud-next-eta.vercel.app/
