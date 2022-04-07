@@ -24,7 +24,7 @@ const EditPerson = ({ person }) => {
   }, [errors])
 
   const updatePerson = async () => {
-      const res = await fetch(`http://localhost:3000/api/people/${router.query.id}`, {
+      const res = await fetch(`/api/people/${router.query.id}`, {
         method: 'PUT',
         headers: {
           "Accept": "application/json",
@@ -166,9 +166,15 @@ const EditPerson = ({ person }) => {
 }
 
 EditPerson.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`http://localhost:3000/api/people/${id}`);
-  const { data } = await res.json();
-  return { person: data }
+  try {
+    const res = await fetch(`/api/people/${id}`);
+    const { data } = await res.json();
+    return { person: data }
+  } catch (error) {
+    const res = await fetch(`${process.env.API_URI}/api/people/${id}`);
+    const { data } = await res.json();
+    return { person: data }
+  }
 }
 
 export default EditPerson;

@@ -21,7 +21,7 @@ const Person = ({ person }) => {
   const deletePerson = async () => {
     const personId = router.query.id;
     try {
-      await fetch(`http://localhost:3000/api/people/${personId}`, {
+      await fetch(`/api/people/${personId}`, {
         method: 'Delete'
       })
       router.push("/");
@@ -92,9 +92,15 @@ const Person = ({ person }) => {
 }
 
 Person.getInitialProps = async ({ query: { id } }) => {
-  const res = await fetch(`http://localhost:3000/api/people/${id}`);
-  const { data } = await res.json();
-  return { person: data }
+  try {
+    const res = await fetch(`/api/people/${id}`);
+    const { data } = await res.json();
+    return { person: data }
+  } catch (error) {
+    const res = await fetch(`${process.env.API_URI}/api/people/${id}`);
+    const { data } = await res.json();
+    return { person: data }
+  }
 }
 
 export default Person;

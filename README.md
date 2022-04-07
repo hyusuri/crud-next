@@ -26,6 +26,10 @@ Project CRUD people using Next.js and MongoDB.
     ```bin
     MONGO_URI=<connection_string>
     ```
+    and `API_URI=` for local development using http://localhost:3000
+    ```bin
+    API_URI=http://localhost:3000
+    ```
 
 4. Run project
     ```sh

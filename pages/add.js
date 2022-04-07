@@ -24,7 +24,7 @@ const NewPerson = () => {
   }, [errors])
 
   const createPerson = async () => {
-      const res = await fetch('http://localhost:3000/api/people', {
+      const res = await fetch(`/api/people`, {
         method: 'POST',
         headers: {
           "Accept": "application/json",

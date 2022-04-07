@@ -10,7 +10,7 @@ const Index = () => {
   const [data, setData] = useState([]);
   const [totalPages, setTotalPages] = useState(10);
   const [activePage, setActivePage] = useState(1);
-  const [apiUrl, setApiUrl] = useState('http://localhost:3000/api/people?page=1');
+  const [apiUrl, setApiUrl] = useState('/api/people?page=1');
 
   useEffect(() => {
     getData();
@@ -26,7 +26,7 @@ const Index = () => {
   
   const onChange = (e, pageInfo) => {
   	setActivePage(pageInfo.activePage);
-    setApiUrl('http://localhost:3000/api/people/?page=' + pageInfo.activePage.toString());
+    setApiUrl('/api/people/?page=' + pageInfo.activePage.toString());
   };
 
   return (
